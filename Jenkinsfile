@@ -17,8 +17,11 @@ pipeline {
 
         stage('2. Build Backend (Maven)') {
             steps {
+                // On indique à Jenkins d'utiliser l'outil Maven qu'on a configuré
+                tools {
+                    maven 'Maven'
+                }
                 dir('backend') {
-                    // Compilation du projet Spring Boot (ajustez selon votre OS: mvnw.bat pour Windows ou mvn)
                     bat 'mvn clean package -DskipTests'
                 }
             }
