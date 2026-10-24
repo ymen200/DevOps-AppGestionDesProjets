@@ -1,0 +1,2 @@
+# Ne pas publier les identifiants Kubernetes locaux
+/k8s-app/mysql/secret.yaml
