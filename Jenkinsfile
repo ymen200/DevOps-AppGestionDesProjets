@@ -31,8 +31,8 @@ pipeline {
             steps {
                 dir('frontend') {
                     bat 'npm install --force'
-                    // On ajoute --skip-version-check pour forcer le build malgré la version de Node
-                    bat 'set NG_CLI_ANALYTICS=false && npx ng build --skip-version-check'
+                    // On utilise node pour forcer le lancement du script de build du package.json directement
+                    bat 'npm run build'
                 }
             }
         }
