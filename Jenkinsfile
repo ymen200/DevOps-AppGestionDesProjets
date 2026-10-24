@@ -15,12 +15,12 @@ pipeline {
             }
         }
 
-        stage('2. Build Backend (Maven)') {
+       stage('2. Build Backend (Maven)') {
+            tools {
+                // Utilisation de la syntaxe nommée attendue par Jenkins
+                maven 'Maven'
+            }
             steps {
-                // On indique à Jenkins d'utiliser l'outil Maven qu'on a configuré
-                tools {
-                    maven 'Maven'
-                }
                 dir('backend') {
                     bat 'mvn clean package -DskipTests'
                 }
