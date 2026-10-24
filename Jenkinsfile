@@ -35,8 +35,8 @@ pipeline {
             steps {
                 dir('frontend') {
                     bat 'npm install --force'
-                    // On force l'exécution de la compilation en contournant le blocage de version CLI
-                    bat 'node ./node_modules/@angular/cli/bin/ng.js build'
+                    // On définit la variable d'environnement pour désactiver le contrôle de version de Node par Angular
+                    bat 'set NG_SKIP_NODE_VERSION_CHECK=true && node ./node_modules/@angular/cli/bin/ng.js build'
                 }
             }
         }
