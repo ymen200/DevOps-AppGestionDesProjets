@@ -30,11 +30,9 @@ pipeline {
        stage('3. Build Frontend (Angular)') {
             steps {
                 dir('frontend') {
-                    // Ignore les avertissements de version de Node pour l'installation
                     bat 'npm install --force'
-                    // Exécute le build en ignorant les contraintes de version de Node si possible, 
-                    // ou force l'utilisation via la variable d'environnement
-                    bat 'set NG_CLI_ANALYTICS=false && npm run build'
+                    // On ajoute --skip-version-check pour forcer le build malgré la version de Node
+                    bat 'set NG_CLI_ANALYTICS=false && npx ng build --skip-version-check'
                 }
             }
         }
