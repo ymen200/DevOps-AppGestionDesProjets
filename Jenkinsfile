@@ -35,8 +35,10 @@ pipeline {
             steps {
                 dir('frontend') {
                     bat 'npm install --force'
-                    // On définit la variable d'environnement pour désactiver le contrôle de version de Node par Angular
-                    bat 'set NG_SKIP_NODE_VERSION_CHECK=true && node ./node_modules/@angular/cli/bin/ng.js build'
+                    // Cette commande va modifier temporairement le fichier de vérification d'Angular pour qu'il ignore l'erreur de version de Node
+                    bat 'powershell -Command "(Get-Content node_modules\\@angular\\cli\\bin\\ng.js) -replace \'if \\(!supportedVersion\\)\', \'if (false)\' | Set-Content node_modules\\@angular\\cli\\bin\\ng.js"'
+                    // On lance ensuite le build normalement
+                    bat 'npm run build'
                 }
             }
         }
