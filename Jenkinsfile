@@ -76,11 +76,11 @@ pipeline {
     }
 
     post {
-        success {
-            echo '🎉 Pipeline exécutée avec succès ! Votre application est à jour sur Kubernetes.'
+            success {
+                echo 'Pipeline executee avec succes ! Votre application est a jour sur Kubernetes.'
+            }
+            failure {
+                echo 'Echec de la pipeline. Verifiez les etapes ci-dessus pour corriger cette erreur.'
+            }
         }
-        failure {
-            echo '❌ Échec de la pipeline. Vérifiez les étapes ci-dessus pour corriger l'erreur.'
-        }
-    }
 }
