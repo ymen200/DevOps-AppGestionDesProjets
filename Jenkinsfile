@@ -35,8 +35,8 @@ pipeline {
             steps {
                 dir('frontend') {
                     bat 'npm install --force'
-                    // On utilise node directement pour lancer le script de build sans la vérification stricte du CLI
-                    bat 'npm run build'
+                    // On force l'exécution de la compilation en contournant le blocage de version CLI
+                    bat 'node ./node_modules/@angular/cli/bin/ng.js build'
                 }
             }
         }
